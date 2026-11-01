@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Um presente para você 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Georgia, serif;
+    background: linear-gradient(145deg, #fff0f3, #fbd5df, #f8e5ed);
+    color: #864b61;
+}
+
+.container {
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    padding: 35px 25px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 28px;
+    box-shadow: 0 15px 45px rgba(160,80,110,0.12);
+    backdrop-filter: blur(10px);
+    animation: aparecer 1.5s ease;
+    z-index: 2;
+}
+
+.flor {
+    font-size: 48px;
+    margin-bottom: 18px;
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+h1 {
+    font-size: 29px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+button {
+    border: none;
+    padding: 15px 28px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #e99bb5, #d77f9f);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(190,100,135,0.25);
+    transition: transform 0.3s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.coracao {
+    position: absolute;
+    bottom: -30px;
+    opacity: 0;
+    animation: subir linear infinite;
+    pointer-events: none;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes subir {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    15% { opacity: 0.7; }
+    85% { opacity: 0.7; }
+    100% { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="flor">🌷</div>
+
+    <h1>Uma coisinha para você...</h1>
+
+    <p>
+        Às vezes, as coisas mais bonitas começam
+        com pequenos gestos.<br>
+        E hoje eu preparei um especialmente para você.
+    </p>
+
+    <button onclick="abrirPresente()">
+        Abrir meu presente 💗
+    </button>
+</div>
+
+<script>
+function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.className = "coracao";
+    coracao.innerHTML = Math.random() > 0.5 ? "♡" : "♥";
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.animationDuration = (5 + Math.random() * 6) + "s";
+    coracao.style.fontSize = (14 + Math.random() * 20) + "px";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(() => coracao.remove(), 11000);
+}
+
+setInterval(criarCoracao, 650);
+
+function abrirPresente() {
+    alert("O melhor ainda está por vir... 💗");
+}
+</script>
+
+</body>
+</html>
